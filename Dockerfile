@@ -21,7 +21,8 @@ ENV APP_DEBUG=0
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-RUN chown -R www-data:www-data /var/www/html/var
+RUN mkdir -p /var/www/html/var \
+    && chown -R www-data:www-data /var/www/html/var
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
