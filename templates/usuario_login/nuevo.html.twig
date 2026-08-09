@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo usuario</title>
+</head>
+<body>
+
+    <h1>Registrar usuario</h1>
+
+    {{ form_start(formulario) }}
+
+        {{ form_widget(formulario) }}
+
+        <button type="submit">
+            Guardar usuario
+        </button>
+
+    {{ form_end(formulario) }}
+
+    <br>
+
+    <a href="{{ path('app_usuarios') }}">
+        Volver a usuarios
+    </a>
+
+</body>
+</html>
