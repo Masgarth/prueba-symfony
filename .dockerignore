@@ -4,4 +4,3 @@
 .env.*
 var/
 vendor/
-docker/
