@@ -26,6 +26,10 @@ RUN mkdir -p /var/www/html/var \
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
