@@ -19,7 +19,8 @@ COPY . .
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN php bin/console cache:clear
 
 RUN chown -R www-data:www-data /var/www/html/var
 
