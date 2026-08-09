@@ -16,11 +16,12 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader -vvv
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
+RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html/var
-
-RUN a2enmod rewrite
 
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
