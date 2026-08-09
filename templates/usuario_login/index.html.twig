@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -6,39 +7,45 @@
 </head>
 <body>
 
-    <h1>Usuarios registrados</h1>
+```
+<h1>Usuarios registrados</h1>
 
-    {% if usuarios is empty %}
-        <p>No existen usuarios registrados.</p>
-    {% else %}
-        <table border="1" cellpadding="8">
-            <thead>
+<a href="{{ path('app_usuario_nuevo') }}">
+    <button type="button">Nuevo usuario</button>
+</a>
+
+{% if usuarios is empty %}
+    <p>No existen usuarios registrados.</p>
+{% else %}
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th>Correo</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for usuario in usuarios %}
                 <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Cargo</th>
-                    <th>Correo</th>
-                    <th>Estado</th>
+                    <td>{{ usuario.getIDuser() }}</td>
+                    <td>{{ usuario.getUsuario() }}</td>
+                    <td>{{ usuario.getNombre() }}</td>
+                    <td>{{ usuario.getCargo() }}</td>
+                    <td>{{ usuario.getCorreo() }}</td>
+                    <td>
+                        {{ usuario.isEstado() ? 'Activo' : 'Inactivo' }}
+                    </td>
                 </tr>
-            </thead>
-
-            <tbody>
-                {% for usuario in usuarios %}
-                    <tr>
-                        <td>{{ usuario.getIDuser() }}</td>
-                        <td>{{ usuario.getUsuario() }}</td>
-                        <td>{{ usuario.getNombre() }}</td>
-                        <td>{{ usuario.getCargo() }}</td>
-                        <td>{{ usuario.getCorreo() }}</td>
-                        <td>
-                            {{ usuario.isEstado() ? 'Activo' : 'Inactivo' }}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+```
 
 </body>
 </html>
